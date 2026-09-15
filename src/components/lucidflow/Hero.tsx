@@ -64,15 +64,15 @@ export function Hero() {
 
   const openScan = () => {
     trackCtaClick({
-      ctaLabel: "Request a Journey Assurance Scan",
+      ctaLabel: "Schedule a Demo Today",
       ctaLocation: "hero",
       preferredEngagement: "scan",
     });
     openEnquiry({
       preferredEngagement: "scan",
       sourceSection: "hero",
-      ctaLabel: "Request a Journey Assurance Scan",
-      heading: "Request a Journey Assurance Scan",
+      ctaLabel: "Schedule a Demo Today",
+      heading: "Schedule a Demo Today",
     });
   };
 
@@ -263,7 +263,7 @@ export function Hero() {
               onClick={openScan} 
               className="min-h-[44px] rounded-[6px] sm:min-h-[52px] sm:px-7 relative overflow-hidden group"
             >
-              <span className="relative z-10">Request a Journey Assurance Scan</span>
+              <span className="relative z-10">Schedule a Demo Today</span>
               {/* Hover sheen effect */}
               <div className="absolute inset-0 -top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                 <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent" />

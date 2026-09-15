@@ -172,7 +172,7 @@ export function EnquiryForm({ prefill, onBusyChange }: EnquiryFormProps) {
       ) : null}
 
       <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
-        {isSubmitting ? "Sending…" : "Request a Journey Assurance Scan"}
+        {isSubmitting ? "Sending…" : "Schedule a Demo Today"}
       </Button>
     </form>
   );

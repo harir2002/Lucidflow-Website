@@ -63,8 +63,8 @@ export const PDF_FILE_NAME = "journey-assurance-scan-overview.pdf";
 export const PDF_PUBLIC_PATH = `/documents/${PDF_FILE_NAME}`;
 
 export const MODAL_HEADINGS = {
-  default: "Request a Journey Assurance Scan",
-  scan: "Request a Journey Assurance Scan",
+  default: "Schedule a Demo Today",
+  scan: "Schedule a Demo Today",
   walkthrough: "Request a Platform Walkthrough",
 } as const;
 

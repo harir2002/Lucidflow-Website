@@ -47,7 +47,7 @@ export function Header() {
       preferredEngagement: "scan",
       sourceSection: location,
       ctaLabel: label,
-      heading: "Request a Journey Assurance Scan",
+      heading: "Schedule a Demo Today",
     });
     setMenuOpen(false);
   };
@@ -81,16 +81,16 @@ export function Header() {
           <Button
             size="sm"
             className="hidden lg:inline-flex"
-            onClick={() => openScan("header", "Request a Journey Assurance Scan")}
+            onClick={() => openScan("header", "Schedule a Demo Today")}
           >
-            Request a Journey Assurance Scan
+            Schedule a Demo Today
           </Button>
           <Button
             size="sm"
             className="max-w-[9.5rem] px-3 text-xs lg:hidden"
-            onClick={() => openScan("header_mobile", "Request a Journey Assurance Scan")}
+            onClick={() => openScan("header_mobile", "Schedule a Demo Today")}
           >
-            Request a Journey Assurance Scan
+            Schedule a Demo Today
           </Button>
           <button
             type="button"

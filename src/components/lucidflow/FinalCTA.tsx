@@ -154,18 +154,18 @@ export function FinalCTA() {
           <Button
             onClick={() => {
               trackCtaClick({
-                ctaLabel: "Request a Journey Assurance Scan",
+                ctaLabel: "Schedule a Demo Today",
                 ctaLocation: "final-cta",
                 preferredEngagement: "scan",
               });
               openEnquiry({
                 preferredEngagement: "scan",
                 sourceSection: "final-cta",
-                heading: "Request a Journey Assurance Scan",
+                heading: "Schedule a Demo Today",
               });
             }}
           >
-            Request a Journey Assurance Scan
+            Schedule a Demo Today
           </Button>
         </div>
         <p className="mt-8 text-sm text-muted-grey">
