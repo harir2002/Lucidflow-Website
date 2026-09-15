@@ -10,7 +10,7 @@
 
 LucidFlow is a premium digital journey monitoring platform that helps insurance and banking organizations identify and remediate dark patterns in customer journeys. Our evidence-led approach provides continuous visibility, automated risk detection, and streamlined corrective action workflows.
 
-**From Assessment to Assurance** — Start with one critical journey, build the evidence, decide the right path forward.
+**From Assessment to Assurance** - Start with one critical journey, build the evidence, decide the right path forward.
 
 ---
 
@@ -30,9 +30,9 @@ LucidFlow is a premium digital journey monitoring platform that helps insurance 
 - Corrective action tracking
 
 ### 🛠️ **Flexible Engagement Models**
-- **One-Time Project** — Baseline assessment, report, and verification
-- **Annual SaaS** — Continuous self-service monitoring with SBA hosting
-- **Annual Enterprise** — Customer-hosted deployment for private cloud needs
+- **One-Time Project** - Baseline assessment, report, and verification
+- **Annual SaaS** - Continuous self-service monitoring with SBA hosting
+- **Annual Enterprise** - Customer-hosted deployment for private cloud needs
 
 ### 🎬 **Premium Digital Experience**
 - Subtle parallax effects and scroll reveals
@@ -46,35 +46,35 @@ LucidFlow is a premium digital journey monitoring platform that helps insurance 
 ## 🏗️ Tech Stack
 
 ### Frontend
-- **React 18** — UI component framework
-- **TypeScript** — Type-safe development
-- **Vite** — Lightning-fast build tool
-- **Tailwind CSS** — Utility-first styling
-- **Framer Motion** — Smooth animations (ready for video events)
+- **React 18** - UI component framework
+- **TypeScript** - Type-safe development
+- **Vite** - Lightning-fast build tool
+- **Tailwind CSS** - Utility-first styling
+- **Framer Motion** - Smooth animations (ready for video events)
 
 ### Features
-- **Responsive Design** — Mobile, tablet, desktop optimized
-- **Dark Mode** — Premium dark-first aesthetic
-- **Accessibility** — WCAG 2.1 Level AA compliant
-- **Performance** — Optimized animations, lazy loading
-- **SEO Ready** — Meta tags, structured data, Open Graph
+- **Responsive Design** - Mobile, tablet, desktop optimized
+- **Dark Mode** - Premium dark-first aesthetic
+- **Accessibility** - WCAG 2.1 Level AA compliant
+- **Performance** - Optimized animations, lazy loading
+- **SEO Ready** - Meta tags, structured data, Open Graph
 
 ### Build & Deploy
-- **Next.js Config** — SSG/SSR ready
-- **PostCSS** — Advanced CSS processing
-- **ESLint** — Code quality checks
-- **Git** — Version control ready
+- **Next.js Config** - SSG/SSR ready
+- **PostCSS** - Advanced CSS processing
+- **ESLint** - Code quality checks
+- **Git** - Version control ready
 
 ---
 
 ## 🎨 Design Highlights
 
 ### Premium Motion System
-- **ScrollReveal** — Elegant content reveals on viewport entry
-- **Parallax Effects** — Subtle background movement on desktop
-- **Ambient Glows** — Pulsing visual depth indicators
-- **Journey Lines** — Animated process flows with traveling highlights
-- **State Transitions** — Smooth micro-interactions throughout
+- **ScrollReveal** - Elegant content reveals on viewport entry
+- **Parallax Effects** - Subtle background movement on desktop
+- **Ambient Glows** - Pulsing visual depth indicators
+- **Journey Lines** - Animated process flows with traveling highlights
+- **State Transitions** - Smooth micro-interactions throughout
 
 ### Color Palette
 ```
@@ -235,14 +235,14 @@ All animations automatically adapt to screen size and user preferences.
 ### Tracked Events
 
 ```
-✓ lucidflow_cta_click        — Button clicks
-✓ lucidflow_form_open        — Form visibility
-✓ lucidflow_form_submit      — Form submissions
-✓ lucidflow_video_open       — Video player opened
-✓ lucidflow_video_play       — Video playback started
-✓ lucidflow_video_progress   — Video milestones (25%, 50%, 75%)
-✓ lucidflow_video_complete   — Video finished
-✓ lucidflow_video_fallback   — Fallback to enquiry form
+✓ lucidflow_cta_click        - Button clicks
+✓ lucidflow_form_open        - Form visibility
+✓ lucidflow_form_submit      - Form submissions
+✓ lucidflow_video_open       - Video player opened
+✓ lucidflow_video_play       - Video playback started
+✓ lucidflow_video_progress   - Video milestones (25%, 50%, 75%)
+✓ lucidflow_video_complete   - Video finished
+✓ lucidflow_video_fallback   - Fallback to enquiry form
 ```
 
 ---
@@ -302,7 +302,7 @@ We welcome contributions! Please follow these steps:
 
 ## 📄 License
 
-This project is licensed under the MIT License — see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 

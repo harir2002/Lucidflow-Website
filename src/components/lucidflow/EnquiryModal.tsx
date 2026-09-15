@@ -74,7 +74,7 @@ export function EnquiryModal() {
         className="relative z-10 w-full max-w-2xl border border-white/12 bg-dark-surface shadow-panel"
       >
         <div className="flex items-start justify-between gap-4 border-b border-white/10 px-5 py-4 sm:px-6">
-          <h2 id={titleId} className="pr-4 text-xl font-semibold tracking-tight text-light-text sm:text-2xl">
+          <h2 id={titleId} className="font-display pr-4 text-xl font-semibold tracking-tight text-light-text sm:text-2xl">
             {heading}
           </h2>
           <button

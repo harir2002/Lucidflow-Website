@@ -20,7 +20,7 @@ export function ThankYouPage() {
         <Header />
         <main className="flex min-h-[80vh] items-center">
           <div className="container-lf py-28">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Thank you.</h1>
+            <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">Thank you.</h1>
             {pdfAvailable ? (
               <DownloadOverview pdfAvailable />
             ) : (

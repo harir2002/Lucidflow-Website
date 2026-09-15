@@ -144,7 +144,7 @@ export function FinalCTA() {
       </div>
 
       <div className="container-lf relative text-center">
-        <h2 className="mx-auto max-w-4xl text-3xl font-bold tracking-[-0.03em] text-light-text sm:text-4xl lg:text-5xl">
+        <h2 className="font-display mx-auto max-w-4xl text-3xl font-bold tracking-[-0.03em] text-light-text sm:text-4xl lg:text-5xl">
           Make compliance visible across every customer journey.
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-grey sm:text-lg">

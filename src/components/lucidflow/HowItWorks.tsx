@@ -71,7 +71,7 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="section-space relative overflow-hidden bg-black">
       <div className="container-lf" ref={containerRef}>
-        <h2 className="section-heading text-white mb-16">From live journey to verified corrective action.</h2>
+        <h2 className="font-display section-heading text-white mb-16">From live journey to verified corrective action.</h2>
 
         {/* Animated flow diagram */}
         <div className="mb-16">
@@ -132,7 +132,7 @@ export function HowItWorks() {
                         </div>
 
                         {/* Step title */}
-                        <h3 className={`text-sm font-semibold text-center transition-colors duration-300 ${
+                        <h3 className={`font-display text-sm font-semibold text-center transition-colors duration-300 ${
                           isActive ? "text-[#e7000b]" : "text-white group-hover:text-[#e7000b]"
                         }`}>
                           {step.title}
@@ -174,7 +174,7 @@ export function HowItWorks() {
                           <div className="h-10 w-10 rounded-full bg-[#e7000b] flex items-center justify-center flex-shrink-0">
                             <span className="font-bold text-white text-sm">{step.number}</span>
                           </div>
-                          <h3 className="font-semibold text-white text-sm text-left">
+                          <h3 className="font-display font-semibold text-white text-sm text-left">
                             {step.title}
                           </h3>
                         </div>

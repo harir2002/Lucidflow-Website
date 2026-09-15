@@ -46,7 +46,7 @@ export function Capabilities() {
                   {/* Icon with rotation on hover */}
                   <Icon className="h-5 w-5 text-muted-grey transition-all duration-300 group-hover:text-crimson group-hover:rotate-4 group-hover:scale-110" />
 
-                  <h3 className="mt-6 text-lg font-semibold tracking-tight text-light-text transition-colors duration-300">
+                  <h3 className="font-display mt-6 text-lg font-semibold tracking-tight text-light-text transition-colors duration-300">
                     {item.title}
                   </h3>
                 </article>

@@ -248,7 +248,7 @@ export function Hero() {
             <span className="h-px w-8 bg-crimson" aria-hidden />
             LUCIDFLOW™ BY SBA INFO SOLUTIONS
           </p>
-          <h1 className="mt-5 text-[clamp(42px,8vw,52px)] font-bold leading-[0.96] tracking-[-0.04em] text-white sm:mt-6 sm:text-[3.75rem] lg:text-[clamp(3.4rem,4.6vw,5.2rem)]">
+          <h1 className="font-display mt-5 text-[clamp(42px,8vw,52px)] font-bold leading-[0.96] tracking-[-0.04em] text-white sm:mt-6 sm:text-[3.75rem] lg:text-[clamp(3.4rem,4.6vw,5.2rem)]">
             From Assessment
             <br />
             to Assurance.

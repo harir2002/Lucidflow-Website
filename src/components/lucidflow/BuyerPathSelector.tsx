@@ -62,7 +62,7 @@ export function BuyerPathSelector() {
                   aria-hidden
                 />
 
-                <h3 className="max-w-md text-xl font-semibold tracking-tight text-light-text sm:text-[1.65rem] sm:leading-snug">
+                <h3 className="font-display max-w-md text-xl font-semibold tracking-tight text-light-text sm:text-[1.65rem] sm:leading-snug">
                   {card.title}
                 </h3>
                 <p className="mt-4 max-w-md text-sm leading-7 text-muted-grey sm:text-base">

@@ -64,7 +64,7 @@ export function FAQ() {
                   <button
                     id={buttonId}
                     type="button"
-                    className="flex min-h-14 w-full items-center justify-between gap-4 py-5 pl-4 text-left transition-all duration-300 hover:bg-white/5 sm:pl-5"
+                    className="flex min-h-14 w-full items-center justify-between gap-4 py-5 pl-4 font-display text-left transition-all duration-300 hover:bg-white/5 sm:pl-5"
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => setOpenIndex(isOpen ? null : index)}

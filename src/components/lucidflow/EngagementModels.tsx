@@ -6,15 +6,15 @@ import { motionConfig } from "@/lib/motion";
 
 const PLANS = [
   {
-    title: "One-Time Project — baseline assessment, report, verification and advisory.",
+    title: "One-Time Project - baseline assessment, report, verification and advisory.",
   },
   {
     title:
-      "Annual SaaS, SBA Hosted — continuous self-service monitoring, dashboard and one baseline validation cycle.",
+      "Annual SaaS, SBA Hosted - continuous self-service monitoring, dashboard and one baseline validation cycle.",
   },
   {
     title:
-      "Annual Enterprise, Customer Hosted — customer environment deployment for private-cloud/data-residency needs.",
+      "Annual Enterprise, Customer Hosted - customer environment deployment for private-cloud/data-residency needs.",
   },
 ];
 
@@ -53,7 +53,7 @@ export function EngagementModels() {
         <ScrollReveal delay={PLANS.length * motionConfig.staggerBase + 100}>
           <div className="mt-6 flex flex-col gap-5 border border-white/10 bg-elevated px-6 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <div>
-              <h3 className="text-xl font-semibold text-light-text">Professional Services</h3>
+              <h3 className="font-display text-xl font-semibold text-light-text">Professional Services</h3>
               <p className="mt-2 max-w-2xl text-sm leading-7 text-muted-grey">
                 governance reporting, developer/CI-CD integration, remediation advisory, managed
                 governance/certification.
