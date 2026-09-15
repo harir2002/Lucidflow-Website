@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --crimson: #e7000b;
+  --near-black: #050505;
+  --dark-surface: #0b0b0b;
+  --elevated: #111111;
+  --light-text: #f7f7f7;
+  --muted-grey: #a9a9a9;
+  --data-blue: #2c7bff;
+  --border-grey: rgba(255, 255, 255, 0.12);
+  --red-border: rgba(231, 0, 11, 0.55);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background: #050505;
+  color: #f7f7f7;
+}
+
+body {
+  min-height: 100%;
+  font-feature-settings: "ss01" on, "cv11" on;
+}
+
+::selection {
+  background: rgba(231, 0, 11, 0.28);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #e7000b;
+  outline-offset: 3px;
+}
+
+@layer components {
+  .container-lf {
+    @apply mx-auto w-full max-w-site px-5 sm:px-6 lg:px-12 xl:px-[72px];
+  }
+
+  .section-space {
+    @apply scroll-mt-24 py-8 sm:py-12 lg:py-16;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-crimson;
+  }
+
+  .section-heading {
+    @apply text-[1.85rem] font-bold tracking-[-0.03em] text-light-text sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12];
+  }
+
+  .section-copy {
+    @apply max-w-3xl text-base leading-7 text-muted-grey sm:text-lg sm:leading-8;
+  }
+
+  .panel {
+    @apply border border-white/10 bg-elevated;
+  }
+
+  .input-field {
+    @apply min-h-11 w-full rounded-sm border border-white/15 bg-[#0B0B0B] px-3.5 py-2.5 text-sm text-light-text placeholder:text-muted-grey transition-colors focus:border-crimson focus:outline-none;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-light-text;
+  }
+
+  .field-error {
+    @apply mt-1.5 text-sm text-[#ff6b73];
+  }
+}
+
+.bg-dots-faint {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.045) 0.7px, transparent 0.7px);
+  background-size: 28px 28px;
+}
+
+@keyframes lucid-dash {
+  to {
+    stroke-dashoffset: -180;
+  }
+}
+
+@keyframes lucid-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes lucid-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(580px);
+    opacity: 0;
+  }
+}
+
+.animate-lucid-dash {
+  animation: lucid-dash 18s linear infinite;
+}
+
+.animate-lucid-float {
+  animation: lucid-float 6.5s ease-in-out infinite;
+}
+
+.animate-lucid-float-slow {
+  animation: lucid-float 8s ease-in-out infinite;
+}
+
+.animate-lucid-glow {
+  animation: lucid-glow 2.8s ease-in-out infinite;
+}
+
+.animate-scan-line {
+  animation: scan-line 8s ease-in-out infinite;
+}
+
+/* Premium Motion Animations */
+@keyframes scrollRevealUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fastPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes lineDraw {
+  from {
+    stroke-dashoffset: var(--dash-offset, 1000);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes travelGlow {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLine {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@keyframes cornerLine {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 24;
+  }
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scanLine {
+  0%, 100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes ambientGlow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes journeyFlow {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-lucid-dash,
+  .animate-lucid-float,
+  .animate-lucid-float-slow,
+  .animate-lucid-glow,
+  .animate-scan-line,
+  .motion-safe-pulse,
+  .motion-safe-flow,
+  [data-reveal],
+  [data-animated-line],
+  [data-ambient-glow] {
+    animation: none !important;
+    transition: none !important;
+  }
+}
