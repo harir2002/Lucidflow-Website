@@ -3,6 +3,7 @@ import { useEnquiry } from "./EnquiryProvider";
 import { trackCtaClick } from "@/hooks/useAnalytics";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { motionConfig } from "@/lib/motion";
+import { useState } from "react";
 
 const PLANS = [
   {
@@ -20,6 +21,7 @@ const PLANS = [
 
 export function EngagementModels() {
   const { openEnquiry } = useEnquiry();
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const openAdvisory = () => {
     trackCtaClick({
@@ -41,11 +43,19 @@ export function EngagementModels() {
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {PLANS.map((plan, index) => (
             <ScrollReveal key={plan.title} delay={index * motionConfig.staggerBase}>
-              <article className="relative overflow-hidden border border-white/10 bg-dark-surface p-7 h-[160px] flex items-center">
-                <p className="text-base leading-7 text-light-text">
+              <button
+                type="button"
+                onClick={() => setSelectedIndex(selectedIndex === index ? null : index)}
+                className={`relative overflow-hidden border bg-dark-surface p-7 h-[160px] flex items-center transition-all duration-300 cursor-pointer ${
+                  selectedIndex === index
+                    ? "border-crimson shadow-lg shadow-red-600/20"
+                    : "border-white/10 hover:border-white/20"
+                }`}
+              >
+                <p className="text-base leading-7 text-light-text text-left">
                   {plan.title}
                 </p>
-              </article>
+              </button>
             </ScrollReveal>
           ))}
         </div>
