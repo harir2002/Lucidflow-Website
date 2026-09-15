@@ -8,7 +8,6 @@ import { prefersReducedMotion } from "@/lib/motion";
 interface VideoPlayerProps {
   videoSrc?: string;
   posterSrc?: string;
-  fallbackPosterSrc?: string;
   title?: string;
   onFallback?: () => void;
 }
@@ -22,8 +21,7 @@ interface VideoPlayerProps {
  */
 export function VideoPlayer({
   videoSrc = "/videos/lucidflow-product-overview.mp4",
-  posterSrc = "/images/lucidflow-video-poster.webp",
-  fallbackPosterSrc = "/images/lucidflow-video-poster.png",
+  posterSrc = "/images/lucidflow-video-poster.png",
   title = "Play LucidFlow product overview video",
   onFallback,
 }: VideoPlayerProps) {
@@ -93,21 +91,16 @@ export function VideoPlayer({
         <div className="aspect-video relative overflow-hidden bg-[#050505]">
           {/* Poster Image */}
           {!imageError ? (
-            <>
-              <picture>
-                <source srcSet={posterSrc} type="image/webp" />
-                <img
-                  src={fallbackPosterSrc}
-                  alt="LucidFlow product video poster"
-                  className="w-full h-full object-cover"
-                  onLoad={() => setPosterLoaded(true)}
-                  onError={() => {
-                    setImageError(true);
-                    setPosterLoaded(true);
-                  }}
-                />
-              </picture>
-            </>
+            <img
+              src={posterSrc}
+              alt="LucidFlow product video poster"
+              className="w-full h-full object-cover"
+              onLoad={() => setPosterLoaded(true)}
+              onError={() => {
+                setImageError(true);
+                setPosterLoaded(true);
+              }}
+            />
           ) : (
             /* Fallback: Abstract decorative background */
             <div className="w-full h-full bg-gradient-to-br from-[#050505] to-[#0b0b0b] flex items-center justify-center">
