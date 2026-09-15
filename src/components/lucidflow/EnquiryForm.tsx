@@ -91,7 +91,7 @@ export function EnquiryForm({ prefill, onBusyChange }: EnquiryFormProps) {
         message:
           error instanceof Error
             ? error.message
-            : "Unable to submit the enquiry. Please try again or email sales@sbainfo.in.",
+            : "Unable to submit the enquiry. Please try again.",
       });
     }
   };

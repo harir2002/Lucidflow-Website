@@ -81,13 +81,6 @@ export function LucidFlowPage() {
           <EngagementModels />
           <FAQ />
           <FinalCTA />
-          <noscript>
-            <div className="container-lf pb-16 text-sm text-muted-grey">
-              <a href="mailto:sales@sbainfo.in">sales@sbainfo.in</a>
-              <span aria-hidden> | </span>
-              <a href="tel:+919500137169">+91 95001 37169</a>
-            </div>
-          </noscript>
         </main>
         <Footer />
         <EnquiryModal />

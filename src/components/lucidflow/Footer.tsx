@@ -1,5 +1,4 @@
-import { CONTACT, NAV_LINKS } from "@/data/lucidflowContent";
-import { trackEmailClick, trackPhoneClick } from "@/hooks/useAnalytics";
+import { NAV_LINKS } from "@/data/lucidflowContent";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -20,25 +19,6 @@ export function Footer() {
             </a>
           ))}
         </nav>
-        <p className="text-sm text-muted-grey">
-          <a
-            href={`mailto:${CONTACT.email}`}
-            className="hover:text-white"
-            onClick={() => trackEmailClick("footer")}
-          >
-            {CONTACT.email}
-          </a>
-          <span className="mx-2" aria-hidden>
-            |
-          </span>
-          <a
-            href={`tel:${CONTACT.phoneTel}`}
-            className="hover:text-white"
-            onClick={() => trackPhoneClick("footer")}
-          >
-            {CONTACT.phoneDisplay}
-          </a>
-        </p>
       </div>
       <div className="border-t border-white/10">
         <div className="container-lf py-5 text-xs text-muted-grey">

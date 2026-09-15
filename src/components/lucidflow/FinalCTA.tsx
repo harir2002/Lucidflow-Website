@@ -1,5 +1,4 @@
-import { CONTACT } from "@/data/lucidflowContent";
-import { trackCtaClick, trackEmailClick, trackPhoneClick } from "@/hooks/useAnalytics";
+import { trackCtaClick } from "@/hooks/useAnalytics";
 import { Button } from "./Button";
 import { useEnquiry } from "./EnquiryProvider";
 import { useRef, useEffect, useState } from "react";
@@ -168,25 +167,6 @@ export function FinalCTA() {
             Schedule a Demo Today
           </Button>
         </div>
-        <p className="mt-8 text-sm text-muted-grey">
-          <a
-            href={`mailto:${CONTACT.email}`}
-            className="inline-flex min-h-11 items-center hover:text-light-text"
-            onClick={() => trackEmailClick("final-cta")}
-          >
-            {CONTACT.email}
-          </a>
-          <span className="mx-2" aria-hidden>
-            |
-          </span>
-          <a
-            href={`tel:${CONTACT.phoneTel}`}
-            className="inline-flex min-h-11 items-center hover:text-light-text"
-            onClick={() => trackPhoneClick("final-cta")}
-          >
-            {CONTACT.phoneDisplay}
-          </a>
-        </p>
       </div>
     </section>
   );

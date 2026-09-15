@@ -314,11 +314,9 @@ LucidFlow is built by **SBA Info Solutions**, specializing in digital journey co
 
 ---
 
-## 📞 Support & Contact
+## � Getting Started
 
-- **Email:** [sales@sbainfo.in](mailto:sales@sbainfo.in)
-- **Phone:** [+91 95001 37169](tel:+919500137169)
-- **GitHub Issues:** [Report a bug](https://github.com/harir2002/Lucidflow-Website/issues)
+Follow the setup and deployment guides above.
 
 ---
 

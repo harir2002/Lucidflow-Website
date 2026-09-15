@@ -69,7 +69,7 @@ export async function submitEnquiry(
     return {
       ok: false,
       message:
-        "Form submission is not configured. Please contact sales@sbainfo.in directly.",
+        "Form submission is not configured. Please try again later.",
     };
   }
 
@@ -88,7 +88,7 @@ export async function submitEnquiry(
         ok: false,
         message:
           errorData.message ||
-          "Unable to submit enquiry. Please try again or contact sales@sbainfo.in.",
+          "Unable to submit enquiry. Please try again.",
         errors: errorData.errors,
       };
     }
@@ -103,7 +103,7 @@ export async function submitEnquiry(
     return {
       ok: false,
       message:
-        "Network error. Please check your connection or contact sales@sbainfo.in.",
+        "Network error. Please check your connection and try again.",
     };
   }
 }
