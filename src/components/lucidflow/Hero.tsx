@@ -244,8 +244,7 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28 xl:px-[72px]">
         <div className="max-w-2xl">
-          <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 sm:text-xs">
-            <span className="h-px w-8 bg-crimson" aria-hidden />
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 sm:text-xs">
             LUCIDFLOW™ BY SBA INFO SOLUTIONS
           </p>
           <h1 className="font-display mt-5 text-[clamp(42px,8vw,52px)] font-bold leading-[0.96] tracking-[-0.04em] text-white sm:mt-6 sm:text-[3.75rem] lg:text-[clamp(3.4rem,4.6vw,5.2rem)]">
