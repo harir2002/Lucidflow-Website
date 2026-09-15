@@ -1,27 +1,4 @@
 import { z } from "zod";
-import {
-  BUYER_STAGE_OPTIONS,
-  ENGAGEMENT_OPTIONS,
-  INDUSTRY_OPTIONS,
-  PRIORITY_JOURNEY_OPTIONS,
-} from "@/data/lucidflowContent";
-
-const buyerStageValues = BUYER_STAGE_OPTIONS.map((option) => option.value) as [
-  string,
-  ...string[],
-];
-const engagementValues = ENGAGEMENT_OPTIONS.map((option) => option.value) as [
-  string,
-  ...string[],
-];
-const journeyValues = PRIORITY_JOURNEY_OPTIONS.map((option) => option.value) as [
-  string,
-  ...string[],
-];
-const industryValues = INDUSTRY_OPTIONS.map((option) => option.value) as [
-  string,
-  ...string[],
-];
 
 export const enquirySchema = z.object({
   fullName: z
@@ -46,19 +23,6 @@ export const enquirySchema = z.object({
     .min(2, "Enter your company name.")
     .max(160, "Company name is too long."),
   role: z.string().trim().max(120, "Role is too long.").optional().or(z.literal("")),
-  industry: z.enum(industryValues).optional().or(z.literal("")),
-  buyerStage: z.enum(buyerStageValues, {
-    required_error: "Select your current stage.",
-    invalid_type_error: "Select your current stage.",
-  }),
-  priorityJourney: z.enum(journeyValues, {
-    required_error: "Select a priority journey.",
-    invalid_type_error: "Select a priority journey.",
-  }),
-  preferredEngagement: z.enum(engagementValues, {
-    required_error: "Select a preferred engagement.",
-    invalid_type_error: "Select a preferred engagement.",
-  }),
   message: z
     .string()
     .trim()

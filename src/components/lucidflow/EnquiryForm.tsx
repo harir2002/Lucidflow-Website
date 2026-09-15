@@ -2,12 +2,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  BUYER_STAGE_OPTIONS,
-  ENGAGEMENT_OPTIONS,
-  INDUSTRY_OPTIONS,
-  PRIORITY_JOURNEY_OPTIONS,
-} from "@/data/lucidflowContent";
 import { enquirySchema, type EnquiryFormInput } from "@/lib/validation";
 import { getUtmParams } from "@/hooks/useUtmParams";
 import { trackFormSubmit } from "@/hooks/useAnalytics";
@@ -41,10 +35,6 @@ export function EnquiryForm({ prefill, onBusyChange }: EnquiryFormProps) {
       phone: "",
       company: "",
       role: "",
-      industry: "",
-      buyerStage: prefill?.buyerStage,
-      priorityJourney: undefined,
-      preferredEngagement: prefill?.preferredEngagement,
       message: "",
       consent: undefined,
     },
@@ -65,10 +55,6 @@ export function EnquiryForm({ prefill, onBusyChange }: EnquiryFormProps) {
       phone: "",
       company: "",
       role: "",
-      industry: "",
-      buyerStage: prefill?.buyerStage,
-      priorityJourney: undefined,
-      preferredEngagement: prefill?.preferredEngagement,
       message: "",
       consent: undefined,
       utm_source: utm.utm_source ?? "",
@@ -96,10 +82,6 @@ export function EnquiryForm({ prefill, onBusyChange }: EnquiryFormProps) {
       }
 
       trackFormSubmit({
-        buyerStage: values.buyerStage,
-        preferredEngagement: values.preferredEngagement,
-        priorityJourney: values.priorityJourney,
-        industry: values.industry,
         sourceSection: prefill?.sourceSection,
       });
 
@@ -143,56 +125,7 @@ export function EnquiryForm({ prefill, onBusyChange }: EnquiryFormProps) {
         <Field label="Role" error={errors.role?.message} htmlFor="role">
           <input id="role" className="input-field" autoComplete="organization-title" {...register("role")} />
         </Field>
-        <Field label="Industry" error={errors.industry?.message} htmlFor="industry">
-          <select id="industry" className="input-field" {...register("industry")}>
-            <option value="" />
-            {INDUSTRY_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-        <Field label="Buyer stage" error={errors.buyerStage?.message} htmlFor="buyerStage">
-          <select id="buyerStage" className="input-field" {...register("buyerStage")}>
-            <option value="" />
-            {BUYER_STAGE_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-        <Field
-          label="Priority journey"
-          error={errors.priorityJourney?.message}
-          htmlFor="priorityJourney"
-        >
-          <select id="priorityJourney" className="input-field" {...register("priorityJourney")}>
-            <option value="" />
-            {PRIORITY_JOURNEY_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </Field>
       </div>
-
-      <Field
-        label="Preferred engagement"
-        error={errors.preferredEngagement?.message}
-        htmlFor="preferredEngagement"
-      >
-        <select id="preferredEngagement" className="input-field" {...register("preferredEngagement")}>
-          <option value="" />
-          {ENGAGEMENT_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </Field>
 
       <Field label="Message" error={errors.message?.message} htmlFor="message">
         <textarea
