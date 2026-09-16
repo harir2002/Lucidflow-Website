@@ -1,5 +1,11 @@
 import { z } from "zod";
 
+/**
+ * Enquiry Form Validation Schema
+ * 
+ * Simplified to match Edge Function payload requirements.
+ * Only core form fields - no UTM, session, or metadata fields.
+ */
 export const enquirySchema = z.object({
   fullName: z
     .string()
@@ -22,7 +28,12 @@ export const enquirySchema = z.object({
     .trim()
     .min(2, "Enter your company name.")
     .max(160, "Company name is too long."),
-  role: z.string().trim().max(120, "Role is too long.").optional().or(z.literal("")),
+  role: z
+    .string()
+    .trim()
+    .max(120, "Role is too long.")
+    .optional()
+    .or(z.literal("")),
   message: z
     .string()
     .trim()
@@ -34,15 +45,6 @@ export const enquirySchema = z.object({
       message: "Consent is required so SBA Info Solutions can contact you.",
     }),
   }),
-  utm_source: z.string().optional().or(z.literal("")),
-  utm_medium: z.string().optional().or(z.literal("")),
-  utm_campaign: z.string().optional().or(z.literal("")),
-  utm_term: z.string().optional().or(z.literal("")),
-  utm_content: z.string().optional().or(z.literal("")),
-  landingPageUrl: z.string().optional().or(z.literal("")),
-  referrer: z.string().optional().or(z.literal("")),
-  ctaLocation: z.string().optional().or(z.literal("")),
-  submittedAt: z.string().optional().or(z.literal("")),
 });
 
 export type EnquiryFormValues = z.infer<typeof enquirySchema>;

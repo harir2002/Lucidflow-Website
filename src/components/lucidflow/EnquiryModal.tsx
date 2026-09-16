@@ -4,7 +4,7 @@ import { EnquiryForm } from "./EnquiryForm";
 import { useEnquiry } from "./EnquiryProvider";
 
 export function EnquiryModal() {
-  const { isOpen, closeEnquiry, heading, prefill } = useEnquiry();
+  const { isOpen, closeEnquiry, heading } = useEnquiry();
   const titleId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -91,7 +91,7 @@ export function EnquiryModal() {
           </button>
         </div>
         <div className="max-h-[min(78vh,760px)] overflow-y-auto px-5 py-5 sm:px-6">
-          <EnquiryForm prefill={prefill} onBusyChange={setBusy} />
+          <EnquiryForm onBusyChange={setBusy} />
         </div>
       </div>
     </div>

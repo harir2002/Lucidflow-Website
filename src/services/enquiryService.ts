@@ -1,7 +1,5 @@
 import { enquirySchema, type EnquiryFormInput } from "@/lib/validation";
 import { trackEvent } from "@/hooks/useAnalytics";
-import { getUtmParams } from "@/hooks/useUtmParams";
-import type { EnquiryPayload, EnquiryApiResponse } from "@/types/enquiry";
 
 export interface EnquiryResponse {
   ok: boolean;
@@ -13,22 +11,18 @@ export interface EnquiryResponse {
  * Submit enquiry form data to Supabase Edge Function.
  * 
  * SECURITY:
- * - Form validation happens client-side (Zod) before sending
- * - Data is POSTed to secure backend Edge Function endpoint only
+ * - Form validated client-side with Zod before sending
+ * - Data POSTed only to secure backend Edge Function endpoint
  * - No direct database writes from browser
  * - No PII logged to console or analytics
- * - Edge Function handles:
- *   - Spam protection (Turnstile/reCAPTCHA)
- *   - Email notifications (Resend/SendGrid)
- *   - CRM integration (HubSpot/Zoho/etc)
- *   - Internal alerts (Slack webhook)
- *   - Lead insertion with audit trail
+ * - Payload contains only required form fields
  * 
- * NEVER expose SMTP credentials, CRM keys, or Slack webhooks in frontend code.
- * 
- * ENVIRONMENT:
- * - Development: Uses mock mode if endpoint not configured
- * - Production: Requires valid VITE_LUCIDFLOW_ENQUIRY_ENDPOINT
+ * Edge Function handles:
+ * - Spam protection (Turnstile/reCAPTCHA if configured)
+ * - Lead insertion into database
+ * - Email notifications
+ * - CRM integration
+ * - Internal alerts
  */
 export async function submitEnquiry(
   data: EnquiryFormInput
@@ -49,68 +43,42 @@ export async function submitEnquiry(
   // Get enquiry endpoint from environment
   const endpoint = import.meta.env.VITE_LUCIDFLOW_ENQUIRY_ENDPOINT;
 
-  // Get UTM parameters and session info
-  const utm = getUtmParams();
-
-  // Build enquiry payload for Edge Function
-  const payload: EnquiryPayload = {
-    // Form fields (safely validated)
-    full_name: formData.fullName,
-    work_email: formData.workEmail,
-    phone: formData.phone || undefined,
-    company: formData.company,
-    role: formData.role || undefined,
-    message: formData.message || undefined,
-
-    // Consent tracking (REQUIRED for GDPR/privacy compliance)
-    consent_given: formData.consent === true,
-    consent_timestamp: new Date().toISOString(),
-
-    // Campaign tracking (non-PII)
-    utm_source: utm.utm_source ?? undefined,
-    utm_medium: utm.utm_medium ?? undefined,
-    utm_campaign: utm.utm_campaign ?? undefined,
-    utm_term: utm.utm_term ?? undefined,
-    utm_content: utm.utm_content ?? undefined,
-
-    // Session tracking (non-PII)
-    landing_page: window.location.href,
-    referrer: document.referrer || "",
-    source_cta_location: formData.ctaLocation || "unknown",
-
-    // Submission timestamp
-    submitted_at: new Date().toISOString(),
-  };
-
-  // Development mode: Mock submission if endpoint not configured
+  // Development mode: warn if endpoint not configured
   if (import.meta.env.DEV && !endpoint) {
-    console.info(
-      "[LucidFlow enquiry - DEV MODE]\n" +
-      "In production, this would POST to: VITE_LUCIDFLOW_ENQUIRY_ENDPOINT\n" +
-      "Configure .env to enable live submissions.\n" +
-      "See docs/supabase-frontend-setup.md"
+    console.warn(
+      "[LucidFlow] Form submission not configured in development. " +
+      "Set VITE_LUCIDFLOW_ENQUIRY_ENDPOINT in .env to enable live submissions."
     );
 
     // Simulate network delay
     await new Promise((resolve) => setTimeout(resolve, 800));
 
-    // Return mock success (does not insert into database)
     return {
       ok: true,
-      message: "Enquiry received (dev mode - not persisted).",
+      message: "Enquiry received (development mode - not persisted).",
     };
   }
 
-  // Production mode: Check endpoint is configured
+  // Production: Check endpoint is configured
   if (!endpoint) {
     return {
       ok: false,
-      message:
-        "Form submission is not configured. Please try again later.",
+      message: "We could not submit your enquiry right now. Please try again.",
     };
   }
 
   try {
+    // Build payload exactly as Edge Function expects
+    const payload = {
+      full_name: formData.fullName.trim(),
+      work_email: formData.workEmail.trim().toLowerCase(),
+      phone: formData.phone?.trim() || "",
+      company: formData.company.trim(),
+      role: formData.role?.trim() || "",
+      message: formData.message?.trim() || "",
+      consent_given: formData.consent === true,
+    };
+
     // POST to Supabase Edge Function
     const response = await fetch(endpoint, {
       method: "POST",
@@ -120,62 +88,60 @@ export async function submitEnquiry(
       body: JSON.stringify(payload),
     });
 
-    // Handle server errors (4xx, 5xx)
-    if (!response.ok) {
-      const errorData = (await response.json().catch(() => ({}))) as EnquiryApiResponse;
+    // Handle success (201 Created or 200 OK)
+    if (response.ok || response.status === 201) {
+      let responseData: any;
       
-      // Log error to server (non-PII safe)
-      console.error("[LucidFlow enquiry error]", {
-        status: response.status,
-        message: errorData.message,
-      });
+      try {
+        responseData = await response.json();
+      } catch {
+        // If response has no body, treat as success
+        responseData = { success: true };
+      }
 
-      return {
-        ok: false,
-        message:
-          errorData.message ||
-          "Unable to submit enquiry. Please try again.",
-        errors: errorData.errors,
-      };
+      // Check for success indicator in response
+      if (responseData.success || response.status === 201) {
+        // Track non-PII analytics events only
+        trackEvent("generate_lead", {
+          // Non-PII only
+          submission_status: "success",
+        });
+
+        trackEvent("lucidflow_form_submit", {
+          // Non-PII only
+          success: true,
+        });
+
+        return {
+          ok: true,
+          message: responseData.message || "Thank you for your enquiry.",
+        };
+      }
     }
 
-    // Success response from Edge Function
-    const result = (await response.json()) as EnquiryApiResponse;
-
-    // Track non-PII analytics events
-    // Do NOT send form data to GA4
-    trackEvent("generate_lead", {
-      // Non-PII only
-      source: formData.ctaLocation || "unknown",
-      campaign: utm.utm_campaign || "(organic)",
-    });
-
-    trackEvent("lucidflow_form_submit", {
-      // Non-PII only
-      success: true,
-      submission_id: result.lead_id || "unknown",
-    });
+    // Handle server errors
+    const errorData = await response.json().catch(() => ({}));
 
     return {
-      ok: true,
-      message: result.message || "Enquiry submitted successfully.",
+      ok: false,
+      message: "We could not submit your enquiry right now. Please try again.",
+      errors: errorData.errors,
     };
   } catch (error) {
-    // Network or parsing error
-    console.error("[LucidFlow enquiry network error]", {
-      message: error instanceof Error ? error.message : String(error),
+    // Network or parsing error - don't expose details
+    console.error("[LucidFlow form error] Network request failed", {
+      endpoint,
+      timestamp: new Date().toISOString(),
     });
 
-    // Track non-PII failure event
+    // Track failure event (non-PII only)
     trackEvent("lucidflow_form_submit", {
       success: false,
-      error_type: "network",
     });
 
     return {
       ok: false,
-      message:
-        "Network error. Please check your connection and try again.",
+      message: "We could not submit your enquiry right now. Please try again.",
     };
   }
 }
