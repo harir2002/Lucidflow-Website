@@ -53,16 +53,19 @@ export function VideoModal({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen, onClose]);
 
-  // Focus management
+  // Focus management and auto-play
   useEffect(() => {
     if (isOpen) {
       previousFocusRef.current = document.activeElement as HTMLElement;
       document.body.style.overflow = "hidden";
       
-      // Focus video or close button
+      // Auto-play video when modal opens
       setTimeout(() => {
+        videoRef.current?.play().catch((error) => {
+          console.log("Video auto-play not allowed or failed:", error);
+        });
         videoRef.current?.focus();
-      }, 0);
+      }, 100);
     } else {
       document.body.style.overflow = "";
       previousFocusRef.current?.focus();
