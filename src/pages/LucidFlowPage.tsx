@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { AIAutomationSection } from "@/components/lucidflow/AIAutomationSection";
 import { BuyerPathSelector } from "@/components/lucidflow/BuyerPathSelector";
 import { Capabilities } from "@/components/lucidflow/Capabilities";
 import { EngagementModels } from "@/components/lucidflow/EngagementModels";
@@ -73,6 +74,7 @@ export function LucidFlowPage() {
         <Header />
         <main>
           <Hero />
+          <AIAutomationSection />
           <BuyerPathSelector />
           <WhyNow />
           <Capabilities />

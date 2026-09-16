@@ -2,6 +2,7 @@ import { Shield } from "lucide-react";
 import { Button } from "./Button";
 import { useEnquiry } from "./EnquiryProvider";
 import { trackCtaClick } from "@/hooks/useAnalytics";
+import { trackCTAClick } from "@/lib/ga4";
 import { useState, useEffect, useRef } from "react";
 import { prefersReducedMotion } from "@/lib/motion";
 
@@ -68,6 +69,11 @@ export function Hero() {
       ctaLocation: "hero",
       preferredEngagement: "scan",
     });
+    trackCTAClick({
+      cta_label: "Schedule a Demo Today",
+      cta_location: "hero",
+      preferred_engagement: "scan",
+    });
     openEnquiry({
       preferredEngagement: "scan",
       sourceSection: "hero",
@@ -80,6 +86,10 @@ export function Hero() {
     trackCtaClick({
       ctaLabel: "See How LucidFlow Works",
       ctaLocation: "hero",
+    });
+    trackCTAClick({
+      cta_label: "See How LucidFlow Works",
+      cta_location: "hero",
     });
     // Scroll to video section
     setTimeout(() => {

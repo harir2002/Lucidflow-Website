@@ -1,4 +1,5 @@
 import { trackCtaClick } from "@/hooks/useAnalytics";
+import { trackCTAClick } from "@/lib/ga4";
 import { VideoPlayer } from "@/components/video/VideoPlayer";
 
 /**
@@ -13,6 +14,11 @@ export function VideoPlaceholder() {
       ctaLabel: "Request a Platform Walkthrough",
       ctaLocation: "video",
       preferredEngagement: "demo",
+    });
+    trackCTAClick({
+      cta_label: "Request a Platform Walkthrough",
+      cta_location: "video",
+      preferred_engagement: "demo",
     });
   };
 

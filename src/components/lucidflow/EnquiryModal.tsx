@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { EnquiryForm } from "./EnquiryForm";
 import { useEnquiry } from "./EnquiryProvider";
+import { trackFormOpen } from "@/lib/ga4";
 
 export function EnquiryModal() {
   const { isOpen, closeEnquiry, heading } = useEnquiry();
@@ -13,6 +14,11 @@ export function EnquiryModal() {
 
   useEffect(() => {
     if (!isOpen) return;
+
+    // Track form open event for analytics
+    trackFormOpen({
+      source_section: "form_modal",
+    });
 
     previousFocusRef.current = document.activeElement as HTMLElement | null;
     const timeout = window.setTimeout(() => closeButtonRef.current?.focus(), 20);

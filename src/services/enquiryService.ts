@@ -1,5 +1,6 @@
 import { enquirySchema, type EnquiryFormInput } from "@/lib/validation";
 import { trackEvent } from "@/hooks/useAnalytics";
+import { trackGenerateLead } from "@/lib/ga4";
 
 export interface EnquiryResponse {
   ok: boolean;
@@ -105,6 +106,11 @@ export async function submitEnquiry(
         trackEvent("generate_lead", {
           // Non-PII only
           submission_status: "success",
+        });
+
+        // Track GA4 lead generation (no PII)
+        trackGenerateLead({
+          form_name: "lucidflow_enquiry",
         });
 
         trackEvent("lucidflow_form_submit", {

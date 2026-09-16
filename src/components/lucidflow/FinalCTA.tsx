@@ -1,4 +1,5 @@
 import { trackCtaClick } from "@/hooks/useAnalytics";
+import { trackCTAClick } from "@/lib/ga4";
 import { Button } from "./Button";
 import { useEnquiry } from "./EnquiryProvider";
 import { useRef, useEffect, useState } from "react";
@@ -156,6 +157,11 @@ export function FinalCTA() {
                 ctaLabel: "Schedule a Demo Today",
                 ctaLocation: "final-cta",
                 preferredEngagement: "scan",
+              });
+              trackCTAClick({
+                cta_label: "Schedule a Demo Today",
+                cta_location: "final-cta",
+                preferred_engagement: "scan",
               });
               openEnquiry({
                 preferredEngagement: "scan",

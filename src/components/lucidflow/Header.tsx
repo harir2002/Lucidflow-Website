@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/data/lucidflowContent";
 import { trackCtaClick } from "@/hooks/useAnalytics";
+import { trackCTAClick } from "@/lib/ga4";
 import { Button } from "./Button";
 import { useEnquiry } from "./EnquiryProvider";
 import { Logo } from "./Logo";
@@ -42,6 +43,11 @@ export function Header() {
       ctaLabel: label,
       ctaLocation: location,
       preferredEngagement: "scan",
+    });
+    trackCTAClick({
+      cta_label: label,
+      cta_location: location,
+      preferred_engagement: "scan",
     });
     openEnquiry({
       preferredEngagement: "scan",

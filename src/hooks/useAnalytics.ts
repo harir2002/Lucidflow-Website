@@ -1,12 +1,5 @@
 export type AnalyticsParams = Record<string, string | number | boolean | undefined>;
 
-declare global {
-  interface Window {
-    dataLayer?: unknown[];
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
 function canTrack() {
   return typeof window !== "undefined" && typeof window.gtag === "function";
 }
