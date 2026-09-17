@@ -70,7 +70,7 @@ export interface LeadMetrics {
 
 export const LEAD_STATUSES = ['New', 'Contacted', 'Qualified', 'Meeting Scheduled', 'Proposal Sent', 'Won', 'Lost'] as const;
 
-export const STATUS_COLORS: Record<LucidFlowLead['status'], string> = {
+export const STATUS_COLORS: Record<string, string> = {
   'New': 'text-blue-600',
   'Contacted': 'text-yellow-600',
   'Qualified': 'text-purple-600',
@@ -80,7 +80,7 @@ export const STATUS_COLORS: Record<LucidFlowLead['status'], string> = {
   'Lost': 'text-red-600',
 };
 
-export const STATUS_BG_COLORS: Record<LucidFlowLead['status'], string> = {
+export const STATUS_BG_COLORS: Record<string, string> = {
   'New': 'bg-blue-100',
   'Contacted': 'bg-yellow-100',
   'Qualified': 'bg-purple-100',

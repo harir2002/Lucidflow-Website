@@ -65,7 +65,7 @@ export function AdminLeadDetailPage() {
         }
 
         setLead(leadData);
-        setStatus(leadData.status);
+        setStatus(leadData.status || 'New');
         setAdminNotes(leadData.admin_notes || '');
         setFirstContactedAt(leadData.first_contacted_at?.split('T')[0] || '');
         setNextFollowUpAt(leadData.next_follow_up_at?.split('T')[0] || '');
@@ -220,10 +220,10 @@ export function AdminLeadDetailPage() {
                     </div>
 
                     <div>
-                      <p className="text-sm text-muted-grey mb-2">Consented At</p>
+                      <p className="text-sm text-muted-grey mb-2">Consent Timestamp</p>
                       <p className="text-white">
-                        {lead.consented_at
-                          ? new Date(lead.consented_at).toLocaleDateString()
+                        {lead.consent_timestamp
+                          ? new Date(lead.consent_timestamp).toLocaleDateString()
                           : '-'}
                       </p>
                     </div>
@@ -232,7 +232,7 @@ export function AdminLeadDetailPage() {
                   <div>
                     <p className="text-sm text-muted-grey mb-2">Submitted</p>
                     <p className="text-white">
-                      {new Date(lead.created_at).toLocaleString()}
+                      {new Date(lead.submitted_at).toLocaleString()}
                     </p>
                   </div>
                 </div>

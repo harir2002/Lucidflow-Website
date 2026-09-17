@@ -19,7 +19,6 @@ export function AdminDashboardPage() {
   const [recentLeads, setRecentLeads] = useState<LucidFlowLead[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isAuthorized, setIsAuthorized] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {

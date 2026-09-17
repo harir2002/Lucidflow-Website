@@ -194,8 +194,8 @@ class LeadsService {
         'Lost': 0,
       };
 
-      (statusData as Array<{ status: string }> | null)?.forEach((lead) => {
-        if (lead.status in leads_by_status) {
+      (statusData as Array<{ status?: string }> | null)?.forEach((lead) => {
+        if (lead.status && lead.status in leads_by_status) {
           leads_by_status[lead.status]++;
         }
       });

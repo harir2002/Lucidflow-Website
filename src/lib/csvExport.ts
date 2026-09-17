@@ -69,7 +69,7 @@ export function exportLeadsToCSV(leads: LucidFlowLead[]): void {
     headers.map(escapeCSVValue).join(','),
     ...leads.map((lead) =>
       [
-        formatDateForCSV(lead.created_at),
+        formatDateForCSV(lead.submitted_at),
         escapeCSVValue(lead.full_name),
         escapeCSVValue(lead.work_email),
         escapeCSVValue(lead.phone),
@@ -78,7 +78,7 @@ export function exportLeadsToCSV(leads: LucidFlowLead[]): void {
         escapeCSVValue(lead.preferred_engagement),
         escapeCSVValue(lead.source_section),
         lead.consent_given ? 'Yes' : 'No',
-        formatDateForCSV(lead.consented_at),
+        formatDateForCSV(lead.consent_timestamp),
         escapeCSVValue(lead.status),
         formatDateForCSV(lead.first_contacted_at),
         formatDateForCSV(lead.next_follow_up_at),
