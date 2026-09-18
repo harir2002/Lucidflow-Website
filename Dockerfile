@@ -29,7 +29,7 @@ ENV VITE_GA4_PROPERTY_ID=${VITE_GA4_PROPERTY_ID}
 ENV VITE_ADMIN_EMAIL=${VITE_ADMIN_EMAIL}
 
 # Build the application
-RUN npm run build
+RUN ./node_modules/.bin/tsc && ./node_modules/.bin/vite build
 
 # Production stage
 FROM node:18-alpine
