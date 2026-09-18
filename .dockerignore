@@ -9,6 +9,4 @@ README.md
 .DS_Store
 *.log
 .eslintrc.json
-tsconfig.json
-vite.config.ts
 .kiro
