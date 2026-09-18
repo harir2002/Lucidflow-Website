@@ -6,11 +6,14 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies (needed for both build and tsconfig resolution)
 RUN npm ci
 
 # Copy source code
 COPY . .
+
+# Install dependencies again to ensure all are present
+RUN npm ci
 
 # Build arguments for environment variables
 ARG VITE_SUPABASE_URL
@@ -29,7 +32,7 @@ ENV VITE_GA4_PROPERTY_ID=${VITE_GA4_PROPERTY_ID}
 ENV VITE_ADMIN_EMAIL=${VITE_ADMIN_EMAIL}
 
 # Build the application
-RUN ./node_modules/.bin/tsc && ./node_modules/.bin/vite build
+RUN npm run build
 
 # Production stage
 FROM node:18-alpine
