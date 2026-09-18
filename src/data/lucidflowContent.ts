@@ -18,7 +18,6 @@ export const SEO = {
 export const NAV_LINKS = [
   { href: "#why-lucidflow", label: "Why LucidFlow" },
   { href: "#how-it-works", label: "How It Works" },
-  { href: "#assurance-scan", label: "Assurance Scan" },
   { href: "#models", label: "Models" },
   { href: "#faq", label: "FAQ" },
 ] as const;
